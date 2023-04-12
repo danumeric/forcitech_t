@@ -5,12 +5,9 @@
       <Transition>
         <nav v-show="isNavPanelShowed || isNavExtended" class="header__main-nav">
           <ul class="header__nav-links">
-            <li class="header__nav-link"><a href="#">Преимущества Tele2</a></li>
-            <li class="header__nav-link"><a href="#">Тарифы</a></li>
-            <li class="header__nav-link"><a href="#">Акции и спецпредложения</a></li>
-            <li class="header__nav-link"><a href="#">Промотариф Tele2</a></li>
-            <li class="header__nav-link"><a href="#">Технология eSIM</a></li>
-            <li class="header__nav-link"><a href="#">Подключение нового абонента</a></li>
+            <li class="header__nav-link" v-for="link in g_links_data" :key="link.id">
+              <a :href="link.path">{{ link.name }}</a>
+            </li>
           </ul>
 
           <HeaderCommonLocation class="header__location-sm" /></nav
@@ -39,6 +36,7 @@
 
 <script>
 import HeaderCommonLocation from '@/components/HeaderCommon/HeaderCommonLocation'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HeaderCommon',
@@ -47,6 +45,9 @@ export default {
   },
   components: {
     HeaderCommonLocation,
+  },
+  computed: {
+    ...mapGetters(['g_links_data']),
   },
   data() {
     return {

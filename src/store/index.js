@@ -1,14 +1,6 @@
 import { createStore } from 'vuex'
+import menuLinks from './modules/menuLinks'
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+  modules: { menuLinks },
 })
